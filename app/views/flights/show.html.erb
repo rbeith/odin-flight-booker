@@ -1,0 +1,9 @@
+Available Flights:
+	<% @flight.each do |result| %>
+		<ul>
+			<div>Departing from:<%= result.departure_airport.airport_code %></div>
+			<div>Arriving at:<%= result.arrival_airport.airport_code %></div>
+			<div>Passengers:<%= result.passengers %></div>
+			<div>Departure Time:<%= result.start %></div>
+		</ul>
+	<% end %>

@@ -1,0 +1,9 @@
+<%= form_with model: @flight, method: "get", url: flight_path(:params) do |form| %>
+	<%= form.select :departure_airport, @airports %>
+	<%= form.select(:arrival_airport, @airports) %>
+	<%= form.select :passengers, [1, 2, 3, 4] %>
+	<%= select_date %>
+
+	<%= form.submit "Search" %>
+<% end %>
+
