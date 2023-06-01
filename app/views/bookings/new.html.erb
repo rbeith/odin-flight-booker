@@ -1,0 +1,15 @@
+Flight Information:<br>
+Start: <%= @booking.flight.start %><br>
+Departing Airport: <%= @booking.flight.departure_airport.airport_code %><br>
+Arriving Airport: <%= @booking.flight.arrival_airport.airport_code %><br>
+Passengers: <%= @booking.number_of_passengers %>
+
+<%= form_with model: @booking, url: bookings_path(@booking), method: "post" do |f| %>
+		<%= f.fields_for :passengers do |passenger| %>
+			<div>
+				Name <%= passenger.text_field :name %>
+				Email <%= passenger.text_field :email %>
+			</div>
+		<% end %>
+	<%= f.submit %>
+<% end %>

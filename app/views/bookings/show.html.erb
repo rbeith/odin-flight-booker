@@ -1,0 +1,11 @@
+Booking Information<br><br>
+
+<%= @booking.flight.start %><br>
+<%= @booking.flight.departure_airport.airport_code %><br>
+<%= @booking.flight.arrival_airport.airport_code %><br>
+<% @booking.passengers.each do |passenger| %><br>
+	<div>
+		<%= passenger.name %>
+		<%= passenger.email %>
+	</div>
+<% end %>

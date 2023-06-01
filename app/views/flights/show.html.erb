@@ -1,9 +1,15 @@
 Available Flights:
-	<% @flight.each do |result| %>
-		<ul>
-			<div>Departing from:<%= result.departure_airport.airport_code %></div>
-			<div>Arriving at:<%= result.arrival_airport.airport_code %></div>
-			<div>Passengers:<%= result.passengers %></div>
-			<div>Departure Time:<%= result.start %></div>
+
+			<% @flight.each do |result| %>
+			<%= form_with model: result, url: new_booking_path, method: "get" do |f| %>
+				<ul>
+					<div>Departing from: <%= result.departure_airport.airport_code %></div>
+					<div>Arriving at: <%= result.arrival_airport.airport_code %></div>
+					<div>Passengers: <%= @passengers %></div>
+					<%= f.hidden_field :passengers, value: @passengers %>
+					<div>Departure Time: <%= result.start %></div>
+				<%= f.radio_button "id", result.id %>
+				<%= f.submit "Book Flight" %>
+			<% end %>
 		</ul>
 	<% end %>

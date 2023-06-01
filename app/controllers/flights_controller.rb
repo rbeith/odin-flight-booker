@@ -8,6 +8,7 @@ class FlightsController < ApplicationController
 	def show
 		date = Date.civil(flight_params[:date][:year].to_i, flight_params[:date][:month].to_i, flight_params[:date][:day].to_i)
 		@flight = Flight.where(start: date.all_day).where(departure_airport: flight_params[:departure_airport]).where(arrival_airport: flight_params[:arrival_airport])
+		@passengers = flight_params[:passengers]
 	end
 
 	private
